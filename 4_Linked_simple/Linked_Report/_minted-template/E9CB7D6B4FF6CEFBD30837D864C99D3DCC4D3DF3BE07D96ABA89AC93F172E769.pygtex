@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+                \PYG{k+kt}{long} \PYG{n}{t0} \PYG{o}{=} \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{nanoTime}\PYG{p}{();}
+                \PYG{n}{linked}\PYG{p}{.}\PYG{n+na}{append}\PYG{p}{(}\PYG{n}{linked\PYGZus{}2}\PYG{p}{);}
+                \PYG{k+kt}{long} \PYG{n}{t1} \PYG{o}{=} \PYG{n}{System}\PYG{p}{.}\PYG{n+na}{nanoTime}\PYG{p}{();}
+                \PYG{k+kt}{double} \PYG{n}{t\PYGZus{}append\PYGZus{}varyA} \PYG{o}{=} \PYG{p}{(}\PYG{n}{t1} \PYG{o}{\PYGZhy{}} \PYG{n}{t0}\PYG{p}{);}
+
+                \PYG{c+c1}{//reset fixed linked list}
+                \PYG{n}{linked\PYGZus{}3}\PYG{p}{.}\PYG{n+na}{add}\PYG{p}{(}\PYG{n}{numbers\PYGZus{}2}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{);}
+                \PYG{n}{linked\PYGZus{}3}\PYG{p}{.}\PYG{n+na}{createlist}\PYG{p}{(}\PYG{n}{numbers\PYGZus{}2}\PYG{p}{);}
+\end{Verbatim}

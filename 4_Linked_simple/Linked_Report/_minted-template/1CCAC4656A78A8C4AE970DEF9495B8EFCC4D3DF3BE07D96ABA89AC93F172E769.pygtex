@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kt}{int}\PYG{o}{[]} \PYG{n+nf}{asArray}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+
+    \PYG{c+c1}{//call method \PYGZsq{}length\PYGZsq{} which returns the list\PYGZsq{}s size}
+    \PYG{k+kt}{int} \PYG{o}{[]} \PYG{n}{array} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int} \PYG{o}{[}\PYG{n}{length}\PYG{p}{()}\PYG{o}{]}\PYG{p}{;}
+    \PYG{n}{Node} \PYG{n}{index} \PYG{o}{=} \PYG{n}{first}\PYG{p}{;} \PYG{c+c1}{//copy the reference of the first node}
+
+    \PYG{c+c1}{//navigate through the list and copy the stored values into the array}
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{length}\PYG{p}{();} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{array}\PYG{o}{[}\PYG{n}{i}\PYG{o}{]} \PYG{o}{=} \PYG{n}{index}\PYG{p}{.}\PYG{n+na}{number}\PYG{p}{;}
+        \PYG{n}{index} \PYG{o}{=} \PYG{n}{index}\PYG{p}{.}\PYG{n+na}{next}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{k}{return} \PYG{n}{array}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

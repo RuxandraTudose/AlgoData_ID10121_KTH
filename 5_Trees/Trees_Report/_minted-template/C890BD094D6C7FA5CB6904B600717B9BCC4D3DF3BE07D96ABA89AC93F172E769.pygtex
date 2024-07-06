@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+                \PYG{k}{if}\PYG{p}{(}\PYG{n}{array}\PYG{o}{[}\PYG{n}{index}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{key}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                    \PYG{k}{return} \PYG{k+kc}{false}\PYG{p}{;}
+                \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

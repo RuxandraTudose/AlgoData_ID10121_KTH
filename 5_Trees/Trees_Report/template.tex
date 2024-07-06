@@ -1,0 +1,157 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{minted}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{
+    \textbf{Binary Trees}
+}
+\author{Ruxandra-Stefania Tudose}
+\date{Fall 2023}
+
+\maketitle
+
+\section*{Introduction}
+This report aims to open a window on a different way of storing data sets, namely under the form of a binary tree. While this paper will explore
+the recursive implementation of such a tree, it will implicitly also go through the set up of the TreeIterator, which facilitates the way through which such a tree is traversed.
+
+\section*{Implementing the binary tree: the \textit{lookup} method}
+The key in implementing the methods that set up a binary tree is understanding that both the \textit{add}
+and \textit{lookup} methods will find themselves both inside and outside the \textit{Node} class and that they, most importantly, make use of \textit{recursion}. Let's take a look at the \textit{lookup} method since the logic is pretty much the same as far as the \textit{add} method is concerned.\newline
+
+The method outside the Node class is as follows and its goal is to give the starting point of the tree, namely call the method within the Node class using the root:
+\begin{minted}{java}
+    public Integer lookup (Integer key) {
+        return root.lookup(key); 
+    }
+\end{minted}  
+
+After having done so, inside the Node class we now have to make use of the keyword "this" since it will help us always point to the object in current use. This way, by comparing the keys and using recursion we can walk through the tree and look for the desired key.\newline
+
+The important part I think is to understand that the moment such a code line: \textbf{return this.left.lookup(key);} is encountered, the execution stops (remembers where it did), goes back to head of the called method and does the same analysis but this time using the new node reference.
+
+Below the code of the \textit{lookup} method inside the Node class has been included:\newline
+\begin{minted}{java}
+public Integer lookup(Integer key) {
+            
+    if(this.key == key) {
+        return this.value; //checking if we have found the key
+    }
+    else { //otherwise deciding which direction (left or right) to go next 
+        if(this.key > key)
+            if(this.left != null) //checking that we haven't reached the end
+                return this.left.lookup(key);
+            if(this.key < key)
+                if(this.right != null)
+                    return this.right.lookup(key);    
+            }
+        return null;
+}
+\end{minted}
+
+\subsection*{The Analysis of the \textit{lookup} method benchmark}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{||c c c||} 
+    \hline\hline
+    n & RandomTree[ns] & SortedTree[ns] \\ [0.5ex]
+    \hline
+    250 & 289 & 2276\\
+    500 & 425 & 7051 \\
+    1000 & 608 & 12814 \\ 
+    2000 & 743 & 19104 \\ 
+    4000 & 905 & 32714 \\ 
+    8000 & 1455 & 61434 \\ 
+    16000 & 1599 & 115398 \\ [1ex] 
+    \hline
+    \end{tabular}
+    \caption{The execution time of the lookup method.} 
+    \label{table:1}
+\end{table}
+
+\textit{Note: } In the table above, "RandomTree" refers to the tree generated using a a randomly ordered array, while SortedTree refers to the one generated using an ascending ordered one (it therefore is the worst case).\newline
+
+As far as the RandomTree column is concerned, it can be noticed that as the tree's size doubles, there is just a slight increase in the execution time, having a \textit{logarithmic} time complexity behaviour, which we can, therefore conclude that resembles the binary search's one. On the other hand, if a tree is populated using sorted keys (it, therefore, is a worst case scenario), as the number of elements doubles, so does the execution time.  
+
+\section*{Implementing the TreeIterator class}
+
+The starting point of the TreeIterator was the implementation of my binary tree class. After having implemented the interface \textbf{Iterable$<$Integer$>$}, the next step was to create the constructor and to override the provided methods. Since we had to display the keys in an depth first traversal, the implementation has had the following approach:\newline
+
+\textbf{1. Initialising the generic dynamic stack:} I turned my previous implementation of the dynamic stack to a generic one and then initialised a stack of nodes as presented below.
+
+\begin{minted}{java}
+    private LinkedSimple<Node> stack = new LinkedSimple<Node>();
+\end{minted}
+
+
+\textbf{2. The TreeIterator constructor:} assigns to a node the tree's root and traverses as deep as possible following the left direction, while also pushing all those nodes on the stack in order to know where exactly to go back after we exhaust the right branch of a node or when we reach a leaf.
+
+\begin{minted}{java}
+                public TreeIterator() {
+                    next = root;
+                    while(next.left != null) {
+                        stack.push(next);
+                        next = next.left;
+                    }
+                }
+\end{minted}
+
+\textbf{3. Traversing the tree - the approach:} The key that stands behind traversing the tree is always checking if the right branch of a node exists or not. If it exists, we go as deep as possible on the left branch and push all the nodes on the stack, while if it doesn't exist we check if we have reached a \textit{leaf} and therefore \textit{pop} an element from the stack. That is precisely our next node that has to go through the process described above. Moreover, before we call the method that goes through this procedure we keep track of the key in the node and return it in the \textit{next()} method. This sums up to the following in the \textit{nextStep()} method:
+
+\begin{flushleft}
+a) left branch: go as deep as possible and push the nodes on the stack
+\end{flushleft}
+
+\begin{flushleft}
+    b) right branch: check if it exists and go as deep as possible on the left; stop execution (use return)
+\end{flushleft}    
+    
+\begin{flushleft}    
+    c) reach a leaf: pop from the stack; stop execution (use return) + keep on checking the new possible right branch
+\end{flushleft}    
+\begin{flushleft}    
+    d) reach a leaf + empty stack: set next to null; stop the iteration from hasNext(); we have reached the end of the tree
+\end{flushleft}
+\begin{flushleft} 
+e) if you don't reach a leaf keep popping; if it is an empty pop, set next to null
+\end{flushleft}
+
+\begin{minted}{java}
+//go through the tree as long as you don't reach null
+    @Override
+    public boolean hasNext() { 
+        return (next != null);   
+    }
+\end{minted}       
+        
+
+\textit{Note:} nextStep() is called as follows in the next() method and is the place where the decision of what the next node to be analysed should be.
+
+\begin{minted}{java}
+  @Override
+  public Integer next() {
+    Integer n = next.value;
+    nextStep();
+    return n;
+  }
+\end{minted}        
+        
+
+\section*{Adding and retrieving elements from an iterator}
+
+As far as I am concerned, adding new elements after having once iterated through the tree is not a problem since before going through the data structure once again, the new connections are made so nothing is lost. However, if we do try to add simultaneously while retrieving will cause problems. And that is because there are high chances we have perhaps already been to a place where the new insertion takes place, so we can't display it during that specific run. However, if we do wish, after this loop, we can go through the tree again and display those previously inserted nodes where they are supposed to be. In other words, it is a matter of not executing both adding and retrieving simultaneously.
+
+\section*{Difficulties}
+
+The main difficulty I have encountered in this assignment was related to understanding the concept of recursion, but mainly on understanding the Iterator and that was because I quite didn't grasp why we needed it in the first place when we could have gone through the tree without it. Little did I know that it was and is a way of hiding the 'irrelevant' details of the implementation that stands behind the data structure. Now, after having completed the assignment, in my eyes, the Iterator is, therefore, a bridge between being able to navigate a given data structure without worrying too much about the way it is constructed behind.  
+
+\section*{Conclusion}
+
+All in all, I would say that this was the most difficult assignment so far, but at the same time equally interesting and rewarding since in order to set up a Binary Tree and a TreeIterator we had to make use of multiple concepts we have learned in this course by now.
+\end{document}

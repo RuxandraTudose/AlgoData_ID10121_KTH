@@ -1,0 +1,6 @@
+  @Override
+  public Integer next() {
+    Integer n = next.value;
+    nextStep();
+    return n;
+  }

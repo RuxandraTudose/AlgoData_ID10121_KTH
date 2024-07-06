@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//navigating the double linked list backwards and incrementing \PYGZsq{}count\PYGZsq{}}
+    \PYG{k}{while}\PYG{p}{(}\PYG{n}{index}\PYG{p}{.}\PYG{n+na}{prev} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+        \PYG{n}{count} \PYG{o}{++}\PYG{p}{;} \PYG{c+c1}{//variable that keeps track of the list\PYGZsq{}s size}
+        \PYG{n}{index} \PYG{o}{=} \PYG{n}{index}\PYG{p}{.}\PYG{n+na}{prev}\PYG{p}{;}
+    \PYG{p}{\PYGZcb{}}
+
+\end{Verbatim}

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k}{if}\PYG{p}{(}\PYG{n}{counter} \PYG{o}{\PYGZlt{}} \PYG{n}{dynstack}\PYG{p}{.}\PYG{n+na}{length}\PYG{o}{/}\PYG{l+m+mi}{4} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{counter} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kt}{int} \PYG{o}{[]} \PYG{n}{shrinkstack} \PYG{o}{=} \PYG{k}{new} \PYG{k+kt}{int} \PYG{o}{[}\PYG{n}{dynstack}\PYG{p}{.}\PYG{n+na}{length}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{]}\PYG{p}{;}
+      \PYG{p}{...}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k}{if}\PYG{p}{(}\PYG{n}{counter} \PYG{o}{!=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{dynstack}\PYG{o}{[}\PYG{n}{counter}\PYG{o}{\PYGZhy{}\PYGZhy{}]}\PYG{p}{;}
+  \PYG{k}{else}
+    \PYG{k}{throw} \PYG{k}{new} \PYG{n}{ArrayIndexOutOfBoundsException} \PYG{p}{(}\PYG{l+s}{\PYGZdq{}Empty pop\PYGZdq{}}\PYG{p}{);}
+\end{Verbatim}

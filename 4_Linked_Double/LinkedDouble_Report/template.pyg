@@ -1,0 +1,6 @@
+//navigating the double linked list backwards and incrementing 'count'
+    while(index.prev != null) {
+        count ++; //variable that keeps track of the list's size
+        index = index.prev;
+    }
+

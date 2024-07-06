@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+    \PYG{k+kt}{void} \PYG{n+nf}{insert} \PYG{p}{(}\PYG{n}{Node} \PYG{n}{toAdd}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+        \PYG{n}{toAdd}\PYG{p}{.}\PYG{n+na}{next} \PYG{o}{=} \PYG{n}{first}\PYG{p}{;} \PYG{c+c1}{//linking the new node}
+        \PYG{n}{first} \PYG{o}{=} \PYG{n}{toAdd}\PYG{p}{;} \PYG{c+c1}{//updating the head of the list}
+    \PYG{p}{\PYGZcb{}}
+
+\end{Verbatim}

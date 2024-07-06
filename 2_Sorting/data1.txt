@@ -1,0 +1,58 @@
+
+      100       30     0.30
+      200       59     0.30
+      300       88     0.29
+      400      117     0.29
+      500      146     0.29
+      600      183     0.30
+      700      209     0.30
+      800      520     0.65
+      900      290     0.32
+     1000      299     0.30
+     1100      343     0.31
+     1200      356     0.30
+     1300      396     0.30
+     1400      414     0.30
+     1500      449     0.30
+     1600      737     0.46
+ 
+Integer foo = 42;
+test (foo, 13);
+//foo is just a reference 
+Integer bar 42; bar also 13  - doesn't create a new object is already there 
+//Integer objects - create 128 integer objects 
+
+Field field = Integer.class
+java lang reflect field
+field.Accessible to true
+
+Difference between primitive and Integer object
+
+in C local data structure once we return - I can't access anymore in C I return the refernece not the array like in Java 
+
+zap() - no access to the array - still changes it 
+I have my piinter at my array - call zapp - overwrite my array  lose refrence to it - still get my previous result
+
+
+malloc something - be able to return the array itself not the reference 
+allocate an array - put it on the heap NOT stack
+
+C++ : new object put on stack
+pass obj to proceedure - requires the element to put on stack - not the reference //copy it on the stack and operate there - defualt for int in Java 
+&x - not the whole obj on the stack, just the reference - put the reference on the stack
+
+in java everything on the heap
+
+new keyword in C++ - on the heap
+barray *tomat = new Barray 
+
+COMMUTE BETWEEN HEAP AND STACK 
+
+C++ - be able to choose between heap or stack
+in java not this option
+
+constant increase with a value when doubel log behaviour 
+
+whenever I double space in binary - I spend 1s to look  ?!!
+
+

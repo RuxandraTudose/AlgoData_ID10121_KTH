@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{c+c1}{// code for special case \PYGZhy{} remove first element}
+        \PYG{k}{if}\PYG{p}{(}\PYG{n}{previous}\PYG{p}{.}\PYG{n+na}{number} \PYG{o}{==} \PYG{n}{item}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{first} \PYG{o}{=} \PYG{n}{first}\PYG{p}{.}\PYG{n+na}{next}\PYG{p}{;}
+            \PYG{n}{first}\PYG{p}{.}\PYG{n+na}{prev} \PYG{o}{=} \PYG{k+kc}{null}\PYG{p}{;} \PYG{c+c1}{//extra for double linked list}
+        \PYG{p}{\PYGZcb{}}
+
+        \PYG{k}{while} \PYG{p}{(}\PYG{n}{current}\PYG{p}{.}\PYG{n+na}{next} \PYG{o}{!=} \PYG{k+kc}{null}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{k}{if}\PYG{p}{(}\PYG{n}{current}\PYG{p}{.}\PYG{n+na}{number} \PYG{o}{==} \PYG{n}{item}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+                \PYG{n}{previous}\PYG{p}{.}\PYG{n+na}{next} \PYG{o}{=} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{next}\PYG{p}{;}
+                \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{next}\PYG{p}{.}\PYG{n+na}{prev} \PYG{o}{=} \PYG{n}{previous}\PYG{p}{;} \PYG{c+c1}{//extra for double linked list}
+            \PYG{p}{\PYGZcb{}}
+
+        \PYG{c+c1}{//updating the references in order to move forward in the list}
+            \PYG{n}{previous} \PYG{o}{=} \PYG{n}{current}\PYG{p}{;}
+            \PYG{n}{current} \PYG{o}{=} \PYG{n}{current}\PYG{p}{.}\PYG{n+na}{next}\PYG{p}{;}
+        \PYG{p}{\PYGZcb{}}
+\end{Verbatim}

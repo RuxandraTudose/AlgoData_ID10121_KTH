@@ -1,0 +1,7 @@
+
+    void insert (Node toAdd) {
+        toAdd.next = first; //connecting the node to the list
+        toAdd.prev = null; //setting the prev field
+        first.prev = toAdd;//updating the prev field of the initial list head
+        first = toAdd; //updating the head of the list
+    }

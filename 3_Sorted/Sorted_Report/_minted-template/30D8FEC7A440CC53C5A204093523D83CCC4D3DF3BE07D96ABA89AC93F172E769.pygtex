@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{insersort} \PYG{p}{(}\PYG{k+kt}{int} \PYG{o}{[]} \PYG{n}{array}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+
+    \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{n}{array}\PYG{p}{.}\PYG{n+na}{length}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{c+c1}{//look back one position and check if the previous neighbours are disordered}
+        \PYG{k}{for} \PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{j} \PYG{o}{=} \PYG{n}{i}\PYG{p}{;} \PYG{n}{j} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0} \PYG{o}{\PYGZam{}\PYGZam{}} \PYG{n}{array}\PYG{o}{[}\PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{o}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{array}\PYG{o}{[}\PYG{n}{j}\PYG{o}{]} \PYG{p}{;} \PYG{n}{j}\PYG{o}{\PYGZhy{}\PYGZhy{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+            \PYG{n}{swap}\PYG{p}{(}\PYG{n}{array}\PYG{p}{,} \PYG{n}{j}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{j}\PYG{p}{);} \PYG{c+c1}{// if disordered \PYGZhy{} swap!}
+        \PYG{p}{\PYGZcb{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}
